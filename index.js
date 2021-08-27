@@ -35,7 +35,6 @@ function getLabelsAndData(data) {
 
 function drawChart(labels, ...args) {
   const arr = [...args];
-  console.log(arr);
   new Chart(ctx, {
     type: "line",
     data: {
