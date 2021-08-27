@@ -7,7 +7,9 @@ function fetchData() {
 fetchData()
   .then(parseDate)
   .then(getLabelsAndData)
-  .then(({ years, temps, southHem, northHem }) => drawChart(years, temps));
+  .then(({ years, temps, southHem, northHem }) =>
+    drawChart(years, temps, southHem, northHem)
+  );
 
 function parseDate(data) {
   return Papa.parse(data, { header: true }).data;
@@ -31,7 +33,9 @@ function getLabelsAndData(data) {
   );
 }
 
-function drawChart(labels, data) {
+function drawChart(labels, ...args) {
+  const arr = [...args];
+  console.log(arr);
   new Chart(ctx, {
     type: "line",
     data: {
@@ -39,18 +43,31 @@ function drawChart(labels, data) {
       datasets: [
         {
           label: "# Global average temps",
-          data, //on the y-axis to the left
+          data: arr[0], //on the y-axis to the left
           borderColor: "rgba(255, 99, 132, 1)",
           borderWidth: 1,
         },
+        {
+          label: "# temps in the southern hemisphere",
+          data: arr[1], //on the y-axis to the left
+          borderColor: "rgba(54, 162, 235, 1)",
+          borderWidth: 1,
+        },
+        {
+          label: "# temps in the north hemisphere",
+          data: arr[2], //on the y-axis to the left
+          borderColor: "rgba(255, 206, 86, 1)",
+          borderWidth: 1,
+        },
       ],
-    },
-    options: {
-      scales: {
-        y: {
-          ticks: {
-            callback(value) {
-              return value + "°";
+
+      options: {
+        scales: {
+          y: {
+            ticks: {
+              callback(value) {
+                return value + "°";
+              },
             },
           },
         },
@@ -58,19 +75,3 @@ function drawChart(labels, data) {
     },
   });
 }
-// const southChart = new Chart(ctx, {
-//   type: "line",
-//   data: {
-//     labels: mapData.years, //on the x-axis to the left
-//     datasets: [
-//       {
-//         label: "# temps in the southern hemisphere",
-//         data: mapData.southHem,
-//         //on the y-axis to the left borderColor: "rgba(54, 162, 235, 1)",
-//         borderWidth: 1,
-//       },
-//     ],
-//   },
-// });
-// });
-// }
