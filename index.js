@@ -47,7 +47,7 @@ function drawChart(labels, ...args) {
           borderWidth: 1,
           animations: {
             tension: {
-              duration: 1000,
+              duration: 2000,
               easing: "easeInOutCubic",
               from: 1,
               to: 0,
@@ -63,7 +63,7 @@ function drawChart(labels, ...args) {
           borderWidth: 1,
           animations: {
             tension: {
-              duration: 1000,
+              duration: 1500,
               easing: "easeInOutCubic",
               from: 1,
               to: 0,
