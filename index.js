@@ -64,6 +64,7 @@ function drawChart(labels, ...args) {
         scales: {
           y: {
             ticks: {
+              beginAtZero: false,
               callback(value) {
                 return value + "°";
               },
