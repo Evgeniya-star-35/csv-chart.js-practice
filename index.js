@@ -45,21 +45,50 @@ function drawChart(labels, ...args) {
           data: arr[0], //on the y-axis to the left
           borderColor: "rgba(255, 99, 132, 1)",
           borderWidth: 1,
+          animations: {
+            tension: {
+              duration: 1000,
+              easing: "easeInOutCubic",
+              from: 1,
+              to: 0,
+              loop: true,
+              delay: 200,
+            },
+          },
         },
         {
           label: "# temps in the southern hemisphere",
           data: arr[1], //on the y-axis to the left
           borderColor: "rgba(54, 162, 235, 1)",
           borderWidth: 1,
+          animations: {
+            tension: {
+              duration: 1000,
+              easing: "easeInOutCubic",
+              from: 1,
+              to: 0,
+              loop: true,
+              delay: 250,
+            },
+          },
         },
         {
           label: "# temps in the north hemisphere",
           data: arr[2], //on the y-axis to the left
           borderColor: "rgba(255, 206, 86, 1)",
           borderWidth: 1,
+          animations: {
+            tension: {
+              duration: 1000,
+              easing: "easeInOutCubic",
+              from: 1,
+              to: 0,
+              loop: true,
+              delay: 300,
+            },
+          },
         },
       ],
-
       options: {
         scales: {
           y: {
